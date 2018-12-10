@@ -3,3 +3,4 @@ An open-world head-to-head tank fight with simple AI, terrain, and advanced cont
 
 ### Completed Lectures:
 <b> 01 -OverView </b> Which game an overview of the game. 
+<b> 02 -GDD </b> Completed the lecture indicating the Game Design Document.
