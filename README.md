@@ -1,2 +1,5 @@
-# 04_BattleTank
+#  BattleTank Game
 An open-world head-to-head tank fight with simple AI, terrain, and advanced control system in Unreal 4
+
+### Completed Lectures:
+<b> 01 -OverView </b> Which game an overview of the game. 
