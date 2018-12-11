@@ -4,7 +4,7 @@
 #include "MyTank.h"
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
-#include "TankPlayerController.generated.h"
+#include "TankPlayerController.generated.h" // Must be the last include
 
 /**
  * 
@@ -15,7 +15,6 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 	GENERATED_BODY()
 
 public:
-	/*AMyTank* ATankPlayerController::GetControlledTank() const; {
-		GetPawn()
-	}*/
+	AMyTank* GetControlledTank() const;
+	
 };
