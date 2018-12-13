@@ -1,8 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "TankAIController.h"
-#include "GameFramework/PlayerController.h"
-#include "Engine/World.h"
+#include "GameFramework/PlayerController.h" //required for GetWorld() to work
+#include "Engine/World.h" //required for GetWorld() to work
 
 
 void ATankAIController::BeginPlay() {
@@ -14,6 +14,7 @@ void ATankAIController::BeginPlay() {
 		UE_LOG(LogTemp, Warning, TEXT("AI controlled %s is active."), *ControlledTank->GetName());
 	}*/
 	
+	///Function to locate which Pawn AI is targeting. 
 	auto PlayerTank = GetPlayerTank();
 	if (!PlayerTank) {
 		UE_LOG(LogTemp, Warning, TEXT("AI can not locate PlayerPawn. "));
@@ -23,12 +24,12 @@ void ATankAIController::BeginPlay() {
 	}
 };
 
-
+	///fuction to point at AI controlled pawn
 	AMyTank* ATankAIController::GetControlledTank() const {
 
 	return Cast<AMyTank>(GetPawn());
 }
-
+	/// function to point at a player controlled pawn. 
 	AMyTank* ATankAIController::GetPlayerTank() const {
 		auto PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
 		if (!PlayerPawn) { return nullptr; }

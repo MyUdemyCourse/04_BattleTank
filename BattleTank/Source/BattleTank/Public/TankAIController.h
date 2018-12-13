@@ -14,7 +14,11 @@ class BATTLETANK_API ATankAIController : public AAIController
 {
 	GENERATED_BODY()
 private:
+	//Pointer towards AI Pawn.
 	AMyTank* GetControlledTank() const;
+	//Called once at BeginPlay
 	virtual void BeginPlay() override;
+	//Pointer towards Controlled Pawn. 
 	AMyTank* GetPlayerTank() const;
+
 };
