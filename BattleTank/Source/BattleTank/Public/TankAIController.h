@@ -13,11 +13,16 @@ UCLASS()
 class BATTLETANK_API ATankAIController : public AAIController
 {
 	GENERATED_BODY()
+
+public:
+	
 private:
+	// Called Once at BeginPlay.
+	virtual void BeginPlay() override;
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 	//Pointer towards AI Pawn.
 	AMyTank* GetControlledTank() const;
-	//Called once at BeginPlay
-	virtual void BeginPlay() override;
 	//Pointer towards Controlled Pawn. 
 	AMyTank* GetPlayerTank() const;
 

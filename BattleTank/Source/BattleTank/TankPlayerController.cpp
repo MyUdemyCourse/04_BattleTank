@@ -37,7 +37,7 @@ void ATankPlayerController::Tick(float DeltaTime)
 
 	 FVector HitLocation; //this is an OUT parameter.
 	 if (GetSightRayHitLocation(HitLocation)) { // Has "side-effect", is goingto line trace.
-		UE_LOG(LogTemp, Warning, TEXT("HitLocation: %s"), *HitLocation.ToString())
+		GetControlledTank()->AimAt(HitLocation);
 		
 		// TODO Tell controlled tank to aim at this point. 
 
