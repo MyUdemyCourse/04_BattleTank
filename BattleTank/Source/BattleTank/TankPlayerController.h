@@ -29,6 +29,9 @@ private:	//Pointer towards controlled tank.
 	//return an OUT parameter, true if hit landspace
 	bool GetSightRayHitLocation(FVector& HitLocation) const;
 
+	bool GetLookVectorHitLocation(FVector LookDirection, FVector & HitLocation) const;
+
+	//Getting Look Direction 
 	bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
 
 	//creating properties for the cross hair location ( 50% across 33%down)
@@ -36,5 +39,7 @@ private:	//Pointer towards controlled tank.
 		float CrosshairXLocation = .5;
 	UPROPERTY(EditAnywhere)
 		float CrosshairYLocation = .33333;
+	UPROPERTY(EditAnywhere)
+		float LineTraceRange = 1000000;
 		
 };
