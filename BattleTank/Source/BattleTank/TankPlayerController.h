@@ -26,5 +26,8 @@ public:
 
 private:
 	void AimTowardsCrosshair();
+
+	//return an OUT parameter, true if hit landspace
+	bool GetSightRayHitLocation(FVector& HitLocation) const;
 	
 };
