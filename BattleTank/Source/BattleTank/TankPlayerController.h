@@ -15,19 +15,24 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 	GENERATED_BODY()
 
 public:
-	//Pointer towards controlled tank. 
-	AMyTank* GetControlledTank() const;
-
 	// Called Once at BeginPlay.
 	virtual void BeginPlay() override;
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-private:
+private:	//Pointer towards controlled tank. 
+	AMyTank* GetControlledTank() const;
+
 	void AimTowardsCrosshair();
 
 	//return an OUT parameter, true if hit landspace
 	bool GetSightRayHitLocation(FVector& HitLocation) const;
-	
+
+	//creating properties for the cross hair location ( 50% across 33%down)
+	UPROPERTY(EditAnywhere)
+		float CrosshairXLocation = .5;
+	UPROPERTY(EditAnywhere)
+		float CrosshairYLocation = .33333;
+		
 };
