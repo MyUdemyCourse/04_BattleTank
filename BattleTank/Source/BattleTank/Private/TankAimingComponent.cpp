@@ -38,20 +38,20 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 	);
 
 	if (BHaveAimSolution) {
-		auto TankName = GetOwner()->GetName();
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
-		//MoveBarrelTowards();
-		
+		MoveBarrelTowards(AimDirection);
 
 	}	// If no solution found do nothing. 	
 }
+
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection) {
 	//Work-out difference between current barrel rotation, and AimDirection
+	auto BarrelRotator = Barrel->GetForwardVector().Rotation(); // straight down the barrel
+	auto AimAsRotator = AimDirection.Rotation();
+	UE_LOG(LogTemp, Warning, TEXT("AimAsRotator %s"), *AimAsRotator.ToString())
 	//Move the barrel the right amount this frame
 	//Given a max elevation speed, and the frame time. 
-	
-	
-	
+		
 }
 
 void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
