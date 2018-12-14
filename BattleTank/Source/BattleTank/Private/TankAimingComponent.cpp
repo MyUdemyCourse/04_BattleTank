@@ -3,6 +3,9 @@
 #include "TankAimingComponent.h"
 #include "Engine/World.h"
 #include "Components/PrimitiveComponent.h"
+#include "Components/SceneComponent.h"
+#include "Components/StaticMeshComponent.h"
+#include "Engine/Classes/Kismet/GameplayStatics.h"
 
 
 // Sets default values for this component's properties
@@ -18,11 +21,33 @@ UTankAimingComponent::UTankAimingComponent()
 
 
 //Logging ToHitLocation ( at distance )
-void UTankAimingComponent::AimAt(FVector HitLocation)
+void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 {
-	auto OurTankName = GetOwner()->GetName();
-	auto BarrelLocation = Barrel->GetComponentLocation().ToString();
-	UE_LOG(LogTemp, Warning, TEXT("%s aiming at  %s from %s"), *OurTankName, *HitLocation.ToString(), *BarrelLocation)
+	if (!Barrel) { return; }
+	FVector OutLaunchVelocity;
+	FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
+
+	// Caluculate the outlaunchvelocity
+	//.getsafenormal
+	if (UGameplayStatics::SuggestProjectileVelocity(
+		this, // world context object. 
+		OutLaunchVelocity, // velocity
+		StartLocation, // start location
+		HitLocation, // end location
+		LaunchSpeed, // Speed of item
+		false, // Higharc
+		0, // collision radius
+		0, // override gravity
+		ESuggestProjVelocityTraceOption::DoNotTrace // Tracing options for debugging
+		)
+	) {
+		auto TankName = GetOwner()->GetName();
+		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
+		UE_LOG(LogTemp, Warning, TEXT("%s Aiming at %s"), *TankName, *AimDirection.ToString());
+	}
+
+	// If no solution found do nothing. 
+	
 }
 
 void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent* BarrelToSet)

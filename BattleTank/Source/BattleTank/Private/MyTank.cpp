@@ -11,7 +11,7 @@ AMyTank::AMyTank()
 	// No need to protect pointers as added at construction. 
 	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming Component"));
 }
-
+//Referencing and seting the barrel location.
 void AMyTank::SetBarrelReferance(UStaticMeshComponent* BarrelToSet)
 {
 	TankAimingComponent->SetBarrelReference(BarrelToSet);
@@ -39,6 +39,6 @@ void AMyTank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 }
 
 void AMyTank::AimAt(FVector HitLocation) {
-	TankAimingComponent->AimAt(HitLocation);
+	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 	
 }
