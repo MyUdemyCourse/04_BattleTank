@@ -2,6 +2,8 @@
 
 #include "TankAimingComponent.h"
 #include "Engine/World.h"
+#include "Components/PrimitiveComponent.h"
+
 
 // Sets default values for this component's properties
 UTankAimingComponent::UTankAimingComponent()
@@ -23,9 +25,10 @@ void UTankAimingComponent::AimAt(FVector HitLocation)
 	UE_LOG(LogTemp, Warning, TEXT("%s aiming at  %s from %s"), *OurTankName, *HitLocation.ToString(), *BarrelLocation)
 }
 
-void UTankAimingComponent::SetBarrelReferance(UStaticMeshComponent * BarrelToSet)
+void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
 {
 	Barrel = BarrelToSet;
+	
 }
 
 // Called when the game starts

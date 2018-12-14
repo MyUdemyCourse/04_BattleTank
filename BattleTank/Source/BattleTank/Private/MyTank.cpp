@@ -14,7 +14,7 @@ AMyTank::AMyTank()
 
 void AMyTank::SetBarrelReferance(UStaticMeshComponent* BarrelToSet)
 {
-	TankAimingComponent->SetBarrelReferance(BarrelToSet);
+	TankAimingComponent->SetBarrelReference(BarrelToSet);
 }
 
 // Called when the game starts or when spawned
