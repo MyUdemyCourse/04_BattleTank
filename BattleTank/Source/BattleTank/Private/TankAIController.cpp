@@ -27,7 +27,7 @@ void ATankAIController::BeginPlay() {
 void ATankAIController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+///Creating AI aiming towards the player. 
 	if (GetPlayerTank()) {
 		//TODO Move towards the player
 
@@ -37,11 +37,9 @@ void ATankAIController::Tick(float DeltaTime)
 	}
 	//UE_LOG(LogTemp, Warning, TEXT("PlayerController is TICKING"))
 	
-
-
 }
 
-	///fuction to point at AI controlled pawn
+	///function to point at AI controlled pawn
 	AMyTank* ATankAIController::GetControlledTank() const {
 
 	return Cast<AMyTank>(GetPawn());
