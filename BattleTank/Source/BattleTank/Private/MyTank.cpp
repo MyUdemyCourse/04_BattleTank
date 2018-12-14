@@ -12,6 +12,11 @@ AMyTank::AMyTank()
 	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming Component"));
 }
 
+void AMyTank::SetBarrelReferance(UStaticMeshComponent* BarrelToSet)
+{
+	TankAimingComponent->SetBarrelReferance(BarrelToSet);
+}
+
 // Called when the game starts or when spawned
 void AMyTank::BeginPlay()
 {

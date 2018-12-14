@@ -14,6 +14,8 @@ class BATTLETANK_API AMyTank : public APawn
 public:
 	void AimAt(FVector HitLocation);
 	
+	UFUNCTION(BlueprintCallable, Category = Setup)
+	void SetBarrelReferance(UStaticMeshComponent* BarrelToSet);
 
 protected:
 	// Called when the game starts or when spawned

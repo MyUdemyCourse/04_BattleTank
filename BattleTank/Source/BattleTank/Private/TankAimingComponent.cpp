@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "TankAimingComponent.h"
+#include "Engine/World.h"
 
 // Sets default values for this component's properties
 UTankAimingComponent::UTankAimingComponent()
@@ -13,10 +14,18 @@ UTankAimingComponent::UTankAimingComponent()
 }
 
 
+
+//Logging ToHitLocation ( at distance )
 void UTankAimingComponent::AimAt(FVector HitLocation)
 {
 	auto OurTankName = GetOwner()->GetName();
-	UE_LOG(LogTemp, Warning, TEXT("%s aiming at  %s"), *OurTankName, *HitLocation.ToString())
+	auto BarrelLocation = Barrel->GetComponentLocation().ToString();
+	UE_LOG(LogTemp, Warning, TEXT("%s aiming at  %s from %s"), *OurTankName, *HitLocation.ToString(), *BarrelLocation)
+}
+
+void UTankAimingComponent::SetBarrelReferance(UStaticMeshComponent * BarrelToSet)
+{
+	Barrel = BarrelToSet;
 }
 
 // Called when the game starts
